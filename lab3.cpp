@@ -117,28 +117,18 @@ Figura* WektorFigur::operator[](int index)
     }
 }
 
-/*
 class FabrykaFigur
 {
 public:
-    Figura* operator()(const std::string&, double);
+    Figura* operator()();
 };
 
-Figura* FabrykaFigur::operator()(const std::string& t, double p)
+Figura* FabrykaFigur::operator()()
 {
-    if (t == "kwadrat") {
-        Kwadrat tmp{p};
-        return &tmp;
-    }
-    else if (t == "kolo") {
-        Kolo tmp{p};
-        return &tmp;
-    }
-    else {
-        return nullptr;
-    }
+    Kwadrat* tmpPtr;
+    tmpPtr = new Kwadrat;
+    return tmpPtr;
 }
-*/
 
 void f(Figura& tmp)
 {
@@ -149,41 +139,63 @@ void f(Figura& tmp)
 
 int main()
 {
-    Figura  a;
-    Figura  b{4};
-    Kwadrat c{5};
 
-    Figura*  f  = new Kwadrat{};
-    Kwadrat* kw = new Kwadrat{};
-    Kolo*    ko = new Kolo{};
-    if (f) {
-        std::cout << f << "\n";
-    }
+    FabrykaFigur FF{};
+    Figura*      f1;
+    f1 = FF();
+    f1->id();
 
-    f = dynamic_cast< Kwadrat* >(f);
-    if (f) {
-        std::cout << f << "\n";
-    }
-    f = dynamic_cast< Kolo* >(f);
-    if (f) {
-        std::cout << f << "\n";
-    }
-
-    Figura* ptr = nullptr;
-    if (ptr) {
-        std::cout << f << "\n";
-    }
-    else {
-        std::cout << "False"
+    f1 = dynamic_cast< Kolo* >(f1);
+    if (f1) {
+        std::cout << "kwadrat"
                   << "\n";
     }
-    
-    delete f;
-    delete kw;
-    delete ko;
 
-    // f = dynamic_cast< Kolo* >(f);
-    // f->id();
+    delete f1;
+
+    f1 = FF();
+    f1->id();
+
+    
+
+    delete f1;
+
+    // rzutowanie
+    /*
+        Figura*  f  = new Kwadrat{};
+        Kwadrat* kw = new Kwadrat{};
+        Kolo*    ko = new Kolo{};
+        if (f) {
+            std::cout << f << "\n";
+        }
+
+        f = dynamic_cast< Kwadrat* >(f);
+        if (f) {
+            std::cout << f << "\n";
+        }
+        f = dynamic_cast< Kolo* >(f);
+        if (f) {
+            std::cout << f << "\n";
+        }
+
+        Figura* ptr = nullptr;
+        if (ptr) {
+            std::cout << f << "\n";
+        }
+        else {
+            std::cout << "False"
+                      << "\n";
+        }
+        delete f;
+        delete kw;
+        delete ko;
+        */
+
+    /*
+         f = dynamic_cast< Kolo* >(f);
+         f->id();
+         */
+
     /*
         WektorFigur WF;
         WF.push(a);

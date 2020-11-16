@@ -10,15 +10,17 @@ unsigned int transportujFlota(unsigned int towar)
     suma =0;
     int iter;
     iter = 0;
-    int zeglowce;
+    int zaglowce;
     zaglowce=0;
+    int tmp;
     Stocznia stocznia{};
-
+    Statek* s1;
+   
     while ( suma < towar && iter <100000)
     {
-    Statek* s1 = stocznia();
-    tmp = s1->transportuj(); // czy poprawnie? jak wykonac metode klasy, do ktorej posiadamy wskaznik?
-    suma = suma +tmp;
+    s1 = stocznia();
+    tmp = s1->transportuj(); 
+    suma = suma + tmp;
     iter = iter +1;
     s1=dynamic_cast<Zaglowiec*>(s1);
     if(s1)
@@ -27,6 +29,7 @@ unsigned int transportujFlota(unsigned int towar)
     }
     delete s1;
     }
+
    return zaglowce;
   }
 
